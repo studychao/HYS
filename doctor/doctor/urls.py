@@ -18,6 +18,8 @@ from django.contrib import admin
 from index import views as index_views
 
 urlpatterns = [
+    url(r'^sign_in/$', index_views.sign_in, name='sign_in'),
+    url(r'^sign_up/$', index_views.sign_up, name='sign_up'),
     url(r'^$', index_views.index, name='index'),
     url(r'^admin/', admin.site.urls),
 ]
