@@ -2,11 +2,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>基本导航条</title>
+<title>好医生信息台</title>
 <style type="text/css">
 body{
     font-family: "Microsoft YaHei" ! important;
   }
+.all{
+  background-color: #EEEEEE;
+  width:100%;
+  height:800px;
+}
 .zhezhao{
   width:97.5%;
   height:500px;
@@ -53,10 +58,10 @@ body{
   font-size:45px;
 }
 .btn{
-  color:black;
+  color:white;
 }
 .btn:hover{
-  color:green;
+  color:#CCC;
   border-bottom: 3px red solid;
 }
 .activebtn{
@@ -69,7 +74,7 @@ body{
 
 <body>
 <!--代码-->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:white;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#333333;">
   <a class="navbar-brand" href="#">
     <img src="../static/7-1.png" width="30" height="30" class="d-inline-block align-top" alt="">
     好医生信息台
@@ -101,6 +106,7 @@ body{
 
   </div>
 </nav>
+<div class="all">
 <div class="container-fluid" style="position: relative;" >
   <div class="zhezhao"></div>
   <img src="../static/7-3.png" width="100%" height="500" alt="">
@@ -113,7 +119,8 @@ body{
     <button type="button" class="button1">开始体验</button>
 
 </div>
-
+</div>
+</div>
 <!--代码-->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
