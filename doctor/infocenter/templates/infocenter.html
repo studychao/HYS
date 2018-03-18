@@ -121,11 +121,21 @@ body{
     </div> 
   </div>
     <div class="row">
-    <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
-      a
+    <div class="col-md-6" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      {%for document in document%}
+
+      <li>文献标题:{{document.Dtitle}} <br>文献时间:{{document.Dpub_date}}</li>
+
+      {%endfor%}
     </div> 
-    <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
-      a
+    <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      <ul>
+{%for news in news%}
+
+<li>新闻标题:{{news.Ntitle}} <br>新闻时间:{{news.Npub_date}}</li>
+
+{%endfor%}
+</ul>
     </div> 
   </div>
 
