@@ -9,8 +9,14 @@ body{
   }
 .all{
   background-color: #EEEEEE;
-  width:100%;
-  height:800px;
+  width: 100%;
+  height:500px;
+}
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .zhezhao{
   width:97.5%;
@@ -60,7 +66,7 @@ body{
 .btn{
   color:white;
 }
-.btn:hover{
+.btn2:hover{
   color:#CCC;
   border-bottom: 3px red solid;
 }
@@ -85,50 +91,41 @@ body{
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active" style="margin-right: 20px">
-        <a class="btn" href="#" style="border-bottom:3px solid red">主页<span class="sr-only">(current)</span></a>
+        <a class="btn btn2" href="#">主页<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" style="margin-right: 20px">
-        <a class="btn " href="#">产品介绍</a>
+        <a class="btn btn2" href="#">产品介绍</a>
       </li>
       <li class="nav-item" style="margin-right: 20px">
-        <a class="btn " href="#">关于我们</a>
+        <a class="btn btn2" href="#">关于我们</a>
       </li>
-      {% if request.user.is_authticated %}
       <li class="nav-item dropdown" style="margin-right: 80px">
-        <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/7-2.png" alt="">账号</a>
+        <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="border-bottom:3px solid red"><img src="../static/7-2.png" alt="">账号</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./account/login">个人中心</a>
+          <a class="dropdown-item" href="#">登陆</a>
           <a class="dropdown-item" href="#">数据图书馆</a>
-          <a class="dropdown-item" href="#">登出</a>
+          <a class="dropdown-item" href="#">个人中心</a>
         </div>
       </li>
-      {% else %}
-      <li class="nav-item dropdown" style="margin-right: 80px">
-        <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/7-2.png" alt="">账号</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./account/login">登陆</a>
-          <a class="dropdown-item" href="./account/register">注册</a>
-        </div>
-      </li>
-      {% endif %}
     </ul>
-
+</div>
+</nav>
+<div class="all" style="position: relative">
+  <div class="container col-center-block" style="padding-top: 40px">
+  <div class="row">
+    <div class="col-sm-12" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
+      欢迎您，{{ new_user.username }}
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-sm-12" style="background-color: white;border-bottom: 1px solid #CCCCCC;">
+      <br>
+      恭喜您，注册成功啦～！现在你可以<a href="{% url "login" %}">登陆</a>
+     <br>
+    </div> 
+  </div>
 
   </div>
-</nav>
-<div class="all">
-<div class="container-fluid" style="position: relative;" >
-  <div class="zhezhao"></div>
-  <img src="../static/7-3.png" width="100%" height="500" alt="">
-  
-    <div class="boxinlargepic">
-    <p class="tonl">医生的新利器</p>
-    <br>
-    <p class="xsd">运用爬虫技术和数据整合</p>
-    <p class="xsd">给予医生学术道路最大的帮助</p>
-    <button type="button" class="button1">开始体验</button>
-
-</div>
 </div>
 </div>
 <!--代码-->
