@@ -1,36 +1,34 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django import forms
-from models import User
 from django.shortcuts import render
-from django.http import HttpResponseRedirect,HttpResponse
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from .forms import LoginForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-class UserForm(forms.Form):
-    email = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput())
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'],password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse('登陆成功')
+            else:
+                return HttpResponse('登陆失败')
+        else:
+            return HttpResponse('登陆失败')
 
-def sign_in(request):
-    return render_to_response('sign-in.html')
+    else:
+        form = LoginForm()
+    return render(request,'sign-in.html',{'form': form})
 
-def sign_up(request):
-	Method = request.method
-	if Method == 'POST':
-		uf = UserForm(request.POST)
-		if uf.is_valid():
-			email = uf.cleaned_data['email']
-			password = uf.cleaned_data['password']
-			try:
-				registJudge = User.objects.filter(email=email).get().email
-				return render_to_response('sign-in.html',{'registJudge':registJudge})
-			except:
-				registAdd = User.objects.create(email=email,password=password)
-			#registAdd = User.objects.get_or_create(username=username,password=password)[1]
-			#if registAdd == False:
-				return render_to_response('sign-in.html',{'registAdd':registAdd,'email':email})
-	else:
-		uf = UserForm()
-	return render_to_response('sign-up.html',{'uf':uf,'Method':Method})#,context_instance=RequestContext(req)
-   # return render(request,'sign-up.html')
+
+
+@login_required
+def dashboard(request):
+    return render(request,'dashboard.html',{'section':'dashboard'})

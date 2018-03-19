@@ -1,3 +1,4 @@
+#coding=utf-8
 from datetime import date
 from django.shortcuts import render,redirect
 from infocenter.models import News,Document

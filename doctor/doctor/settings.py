@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 # -*- coding: utf-8 -*-
 import os
+from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
-    'account',
-  'infocenter'
+  'infocenter',
+
 ]
 
 MIDDLEWARE = [
@@ -80,7 +82,7 @@ WSGI_APPLICATION = 'doctor.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME':'doctor',   #注意这里的数据库应该以utf-8编码
+    'NAME':'doctor',
     'USER': 'root',
     'PASSWORD': 'root',
     'HOST': 'localhost',
@@ -113,10 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 #LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh-Hans' #使用中国语言
+LANGUAGE_CODE = 'zh-Hans' 
 
-TIME_ZONE = 'Asia/Shanghai' #使用中国上海时间
-
+TIME_ZONE = 'Asia/Shanghai'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -136,3 +137,7 @@ STATICFILES_DIRS=[
     ]
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'static/media')
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = '/account/login/'
+LOGOUT_URL = reverse_lazy('logout')

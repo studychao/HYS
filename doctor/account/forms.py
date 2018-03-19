@@ -2,6 +2,6 @@
 
 from django import forms
 
-class AddForm(forms.Form):
-    email = forms.IntegerField()
-    password = forms.IntegerField()
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
