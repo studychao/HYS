@@ -4,6 +4,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>好医生信息台</title>
 <style type="text/css">
+ul.messages {
+    margin:0px 20px;
+    padding:0;
+    list-style-type:
+    none;
+}
+ul.messages li.success,
+ul.messages li.warning,
+ul.messages li.error,
+ul.messages li.info {
+    margin:0;
+
+    padding:14px 20px;
+    list-style:none;
+    color:#fff;
+}
+
+ul.messages li.success { background:#81ce81; }
+ul.messages li.success a { color:#0ac33e; }
+
+ul.messages li.error { background:#a30029; color:#e9828e; }
+ul.messages li.error a { color:#e9828e; }
+
+ul.messages li.info { background:#faffae; color:#696b4e; }
+ul.messages li.info a { color:#1586de; }
+
+ul.messages li.warning { background:#de9404; }
+ul.messages li.warning a { color:#f49000; }
+
+ul.messages li a.close {
+    margin:0;
+    float:right;
+    opacity:1;
+    border:0;
+    box-shadow:none;
+    text-shadow:none;
+}
+
 body{
     font-family: "Microsoft YaHei" ! important;
   }
@@ -119,7 +157,22 @@ body{
     </ul>
 </div>
 </nav>
+
+
+    
 <div class="all" style="position: relative">
+      {% if messages %}
+    <div style="background-color: #EEEEEE">
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="." class="close">✖</a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+    {% endif %}
   <div class="container col-center-block" style="padding-top: 40px">
   <div class="row">
   <div class="col-sm-12" style="background-color: white;font-size: 40px;border-bottom: 1px solid #CCCCCC">
