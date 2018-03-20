@@ -10,3 +10,6 @@ class News(models.Model):
 class Document(models.Model):
     Dtitle = models.CharField(max_length=50, unique=True)
     Dpub_date = models.DateField()
+    Durl = models.CharField(max_length=100)
+
+    
