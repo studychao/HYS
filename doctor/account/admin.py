@@ -5,6 +5,6 @@ from django.contrib import admin
 
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
-    list_display =['user','favortopic1','favortopic2','favortopic3']
+    list_display =['user','favortopic1','favortopic2']
 
 admin.site.register(Profile,ProfileAdmin)

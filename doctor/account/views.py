@@ -6,7 +6,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm,UserRegistrationForm,ProfileEditForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile,News,Document
+from django.contrib import messages
 # Create your views here.
 
 def user_login(request):
@@ -54,7 +55,16 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile,data=request.POST)
         if profile_form.is_valid():
             profile_form.save()
+            messages.success(request,'成功！')
+        else:
+            messages.error(request,'失败!')
     else:
         profile_form = ProfileEditForm(instance=request.user.profile)
 
     return render(request,'edit.html',{'profile_form':profile_form})
+
+@login_required
+def infocenter(request):
+    news=News.objects.all()
+    document=Document.objects.all()
+    return render(request,'infocenter.html',{'news':news,'document':document})

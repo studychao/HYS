@@ -26,4 +26,4 @@ def clean_password2(self):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('favortopic1','favortopic2','favortopic3')
+        fields = ('favortopic1','favortopic2')
