@@ -104,13 +104,13 @@ body{
         <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="border-bottom:3px solid red"><img src="../../static/7-2.png" alt="">账号</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           	{% if request.user.is_authenticated %}
-		        <a class="dropdown-item" href="../account/login/">登陆</a>
 		        <a class="dropdown-item" href="#">数据图书馆</a>
 		        <a class="dropdown-item" href="#">个人中心</a>
+            <a class="dropdown-item" href="../account/register/">登出</a>
             {% else %}
-            	<a class="dropdown-item" href="#">数据图书馆</a>
+            <a class="dropdown-item" href="../account/login/">登陆</a>
+            <a class="dropdown-item" href="#">数据图书馆</a>
 	         	<a class="dropdown-item" href="#">个人中心</a>
-	         	<a class="dropdown-item" href="../account/register/">登出</a>
             {% endif %}
         </div>
       </li>
@@ -129,22 +129,24 @@ body{
   </div>
     <div class="row">
     <div class="col-md-6" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
-      {%for document in document%}
-
+      <ol>
+      {% for document in document1 %}
       <li>
-      	<a href="{{document.Durl}}">文献标题:{{document.Dtitle}}</a>
-      	<br>文献时间:{{document.Dpub_date}}</li>
+      	<a href="{{document.Durl}}">{{document.Dtitle}}</a>
+      	<br>{{document.Dshoulu_date}}</li>
 
       {%endfor%}
+      </ol>
     </div> 
     <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
-      <ul>
-{%for news in news%}
-
-<li>新闻标题:{{news.Ntitle}} <br>新闻时间:{{news.Npub_date}}</li>
+      <ol>
+{% for news in document2 %}
+<li>
+        <a href="{{news.Durl}}">{{news.Dtitle}}</a>
+        <br>{{news.Dshoulu_date}}</li>
 
 {%endfor%}
-</ul>
+</ol>
     </div> 
   </div>
 

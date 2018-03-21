@@ -21,6 +21,10 @@ class News(models.Model):
 
 class Document(models.Model):
     Dtitle = models.CharField(max_length=50, unique=True)
+    Dkeyword = models.CharField(max_length=50)
+    Dauther = models.CharField(max_length=150)
+    Dsummary = models.CharField(max_length=256)
+    Dshoulu_date = models.CharField(max_length=50)
     Dpub_date = models.DateField()
     Durl = models.CharField(max_length=100)
 
