@@ -8,6 +8,7 @@ from .forms import LoginForm,UserRegistrationForm,ProfileEditForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile,News,Document
 from django.contrib import messages
+import wan
 # Create your views here.
 
 def user_login(request):
@@ -65,6 +66,16 @@ def edit(request):
 
 @login_required
 def infocenter(request):
-    news=News.objects.all()
-    document=Document.objects.all()
-    return render(request,'infocenter.html',{'news':news,'document':document})
+    now_user=Profile.objects.get(user_id=request.user.id)
+    if(now_user.favortopic1!="NULL"):
+        document1=Document.objects.filter(Dkeyword=now_user.favortopic1)
+        if(now_user.favortopic2!="NULL"):
+            document2=Document.objects.filter(Dkeyword=now_user.favortopic2)
+        else:
+            pass
+    elif(now_user.favortopic2!="NULL"):
+        document1=Document.objects.filter(Dkeyword=now_user.favortopic2)
+    else:
+        pass
+    
+    return render(request,'infocenter.html',{'news':document1,'document':document2})

@@ -19,6 +19,7 @@ from index import views as index_views
 
 urlpatterns = [
     url(r'^$', index_views.index, name='index'),
+    url(r'^index$', index_views.index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^account/',include('account.urls')),
 ]
