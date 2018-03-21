@@ -123,8 +123,14 @@ body{
 <div class="all" style="position: relative">
   <div class="container col-center-block" style="padding-top: 40px">
   <div class="row">
-    <div class="col-sm-12" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
-      Welcome to your dashboard{{ request.user.username }}
+    <div class="col-sm-12" style="background-color: white;font-size: 32px;border-bottom: 3px solid #CCCCCC">
+      欢迎您,{{ request.user.username }}.
+    </div> 
+  </div>
+
+    <div class="row">
+    <div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
+      如果您是刚注册的新用户，请务必<a href="./edit">点击此处</a>进一步完善您的信息。
     </div> 
   </div>
   </div>

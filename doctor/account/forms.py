@@ -23,7 +23,11 @@ def clean_password2(self):
     return cd['password2']
 
 
-class ProfileEditForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('favortopic1','favortopic2')
+class ProfileEditForm(forms.Form):
+    favortopic1 = forms.ChoiceField(choices=[('biyan','鼻炎'),('feiai','肺癌')],label='选择专业领域1')
+    favortopic2 = forms.ChoiceField(choices=[('biyan','鼻炎'),('feiai','肺癌')],label='选择专业领域2')
+
+#class Meta:
+#    model = Profile
+#       fields = ('favortopic1','favortopic2')
+
