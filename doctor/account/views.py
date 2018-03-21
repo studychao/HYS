@@ -67,15 +67,15 @@ def edit(request):
 @login_required
 def infocenter(request):
     now_user=Profile.objects.get(user_id=request.user.id)
-    if(now_user.favortopic1!="NULL"):
+    if now_user.favortopic1 is not None:
         document1=Document.objects.filter(Dkeyword=now_user.favortopic1)
-        if(now_user.favortopic2!="NULL"):
+        if now_user.favortopic2 is not None :
             document2=Document.objects.filter(Dkeyword=now_user.favortopic2)
         else:
             pass
-    elif(now_user.favortopic2!="NULL"):
+    elif now_user.favortopic2 is not None:
         document1=Document.objects.filter(Dkeyword=now_user.favortopic2)
     else:
         pass
     
-    return render(request,'infocenter.html',{'news':document1,'document':document2})
+    return render(request,'infocenter.html',{'document1':document1,'document2':document2})

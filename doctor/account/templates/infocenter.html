@@ -129,23 +129,24 @@ body{
   </div>
     <div class="row">
     <div class="col-md-6" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      <ol>
       {% for document in document1 %}
-
       <li>
       	<a href="{{document.Durl}}">{{document.Dtitle}}</a>
-      	<br>文献时间:{{document.Dshoulu_date}}</li>
+      	<br>{{document.Dshoulu_date}}</li>
 
       {%endfor%}
+      </ol>
     </div> 
     <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
-      <ul>
+      <ol>
 {% for news in document2 %}
 <li>
         <a href="{{news.Durl}}">{{news.Dtitle}}</a>
-        <br>文献时间:{{news.Dshoulu_date}}</li>
+        <br>{{news.Dshoulu_date}}</li>
 
 {%endfor%}
-</ul>
+</ol>
     </div> 
   </div>
 
