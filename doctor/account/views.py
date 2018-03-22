@@ -44,6 +44,8 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             profile = Profile.objects.create(user=new_user)
+            profile.favortopic1='鼻炎'
+            profile.save()
             return render(request,'register_done.html',{'new_user':new_user})
 
     else:
@@ -83,11 +85,8 @@ def infocenter(request):
         document1=Document.objects.filter(Dkeyword=now_user.favortopic2)
     else:
         pass
-    
     return render(request,'infocenter.html',{'document1':document1,'document2':document2})
 
 def index(request):
     return render(request,'index.html')
-
-    
 

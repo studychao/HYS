@@ -24,8 +24,8 @@ def clean_password2(self):
 
 
 class ProfileEditForm(forms.Form):
-    favortopic1 = forms.ChoiceField(choices=[('鼻炎','鼻炎'),('肺癌','肺癌')],label='选择专业领域1')
-    favortopic2 = forms.ChoiceField(choices=[('鼻炎','鼻炎'),('肺癌','肺癌')],label='选择专业领域2')
+    favortopic1 = forms.ChoiceField(choices=[(u'鼻炎','鼻炎'),(u'肺癌','肺癌')],label='选择专业领域1')
+    favortopic2 = forms.ChoiceField(choices=[(u'鼻炎','鼻炎'),(u'肺癌','肺癌')],label='选择专业领域2')
 
 #class Meta:
 #    model = Profile
