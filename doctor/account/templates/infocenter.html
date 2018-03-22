@@ -138,8 +138,9 @@ body{
         <br>{{document.Dauther}}
         <div class="record-desc">
             {{document.Dsummary}}
+            <br>最后更新于{{document.Dpub_date}}
         </div>
-
+        
       </li>
 
       {%endfor%}
@@ -150,8 +151,14 @@ body{
 {% for news in document2 %}
 <li>
         <a href="{{news.Durl}}">{{news.Dtitle}}</a>
-        <br>{{news.Dshoulu_date}}</li>
+        <br>{{news.Dshoulu_date}}
+        <br>{{news.Dauther}}
+        <div class="record-desc">
+            {{news.Dsummary}}
+            <br>最后更新于{{news.Dpub_date}}
+        </div>
 
+</li>
 {%endfor%}
 </ol>
     </div> 
