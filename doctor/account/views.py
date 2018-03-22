@@ -53,19 +53,34 @@ def register(request):
 @login_required
 def edit(request):
     if request.method == 'POST':
-        profile_form = ProfileEditForm(instance=request.user.profile,data=request.POST)
+        profile_form = ProfileEditForm(request.POST)
         if profile_form.is_valid():
-            profile_form.save()
-            messages.success(request,'成功！')
+            favortopic1 = profile_form.cleaned_data['favortopic1']
+            favortopic2 = profile_form.cleaned_data['favortopic2']
+            user_id = request.POST['id']
+            profile = Profile.objects.get(user_id=int(user_id))
+            profile.favortopic1 = favortopic1
+            profile.favortopic2 = favortopic2
+            profile.save()
+            messages.success(request,'成功！请至“账号-数据图书馆”查看您的专业领域文献')
         else:
             messages.error(request,'失败!')
     else:
-        profile_form = ProfileEditForm(instance=request.user.profile)
+        profile_form = ProfileEditForm()
 
     return render(request,'edit.html',{'profile_form':profile_form})
 
 @login_required
 def infocenter(request):
+<<<<<<< HEAD
+    news=News.objects.all()
+    document=Document.objects.all()
+    return render(request,'infocenter.html',{'news':news,'document':document})
+
+def index(request):
+    return render(request,'index.html')
+
+=======
     now_user=Profile.objects.get(user_id=request.user.id)
     if now_user.favortopic1 is not None:
         document1=Document.objects.filter(Dkeyword=now_user.favortopic1)
@@ -79,3 +94,4 @@ def infocenter(request):
         pass
     
     return render(request,'infocenter.html',{'document1':document1,'document2':document2})
+>>>>>>> 248d80fdc4a3fef93ef6c2c65abe4896fed4f670

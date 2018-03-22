@@ -28,4 +28,3 @@ class Document(models.Model):
     Dpub_date = models.DateField()
     Durl = models.CharField(max_length=100)
 
-

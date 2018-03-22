@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from index import views as index_views
+from account import views as account_views
 
 urlpatterns = [
+<<<<<<< HEAD
+    url(r'^$', account_views.index, name='index'),
+=======
     url(r'^$', index_views.index, name='index'),
     url(r'^index$', index_views.index, name='index'),
+>>>>>>> 248d80fdc4a3fef93ef6c2c65abe4896fed4f670
     url(r'^admin/', admin.site.urls),
     url(r'^account/',include('account.urls')),
 ]
