@@ -1,5 +1,6 @@
 
 <!DOCTYPE HTML>
+{% load pagination_tags %}
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -128,8 +129,10 @@ body{
       {{keyword2}}
     </div> 
   </div>
+
     <div class="row">
     <div class="col-md-6" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      {% autopaginate document1 5 %}
       <ol>
       {% for document in document1 %}
       <li>
@@ -145,8 +148,10 @@ body{
 
       {%endfor%}
       </ol>
+      {% paginate %}
     </div> 
     <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      {% autopaginate document2 5 %}
       <ol>
 {% for news in document2 %}
 <li>
@@ -161,6 +166,7 @@ body{
 </li>
 {%endfor%}
 </ol>
+{% paginate %}
     </div> 
   </div>
 
