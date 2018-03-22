@@ -104,7 +104,7 @@ body{
         <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/7-2.png" alt="">账号</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href=".">你好，{{ request.user.username }}</a>
-          <a class="dropdown-item" href="#">数据图书馆</a> 
+          <a class="dropdown-item" href="infocenter">数据图书馆</a> 
           <a class="dropdown-item" href="logout">登出</a>
         </div>
       </li>
@@ -113,7 +113,7 @@ body{
         <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../static/7-2.png" alt="">账号</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./login">登陆</a>
-          <a class="dropdown-item" href="#">注册</a>
+          <a class="dropdown-item" href="register">注册</a>
         </div>
       </li>
       {% endif %}
@@ -127,11 +127,16 @@ body{
       欢迎您,{{ request.user.username }}.
     </div> 
   </div>
-
     <div class="row">
+ {% if status > 0 %}
     <div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
+      如果您有其他感兴趣的领域，可以<a href="./edit">点击此处</a>修改您的信息。
+    </div> 
+{% else %}
+	<div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
       如果您是刚注册的新用户，请务必<a href="./edit">点击此处</a>进一步完善您的信息。
     </div> 
+{% endif %}
   </div>
   </div>
 </div>

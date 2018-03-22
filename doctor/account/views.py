@@ -34,7 +34,11 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request,'dashboard.html',{'section':'dashboard'})
+    now_user=Profile.objects.get(user_id=request.user.id)
+    if now_user.favortopic1 is not None:
+        status = 1
+    else:status = 0
+    return render(request,'dashboard.html',{'section':'dashboard','status':status})
 
 def register(request):
     if request.method == 'POST':
@@ -85,7 +89,7 @@ def infocenter(request):
         document1=Document.objects.filter(Dkeyword=now_user.favortopic2)
     else:
         pass
-    return render(request,'infocenter.html',{'document1':document1,'document2':document2})
+    return render(request,'infocenter.html',{'document1':document1,'document2':document2,'keyword1':now_user.favortopic1,'keyword2':now_user.favortopic2})
 
 def index(request):
     return render(request,'index.html')
