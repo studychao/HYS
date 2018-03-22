@@ -72,15 +72,6 @@ def edit(request):
 
 @login_required
 def infocenter(request):
-<<<<<<< HEAD
-    news=News.objects.all()
-    document=Document.objects.all()
-    return render(request,'infocenter.html',{'news':news,'document':document})
-
-def index(request):
-    return render(request,'index.html')
-
-=======
     now_user=Profile.objects.get(user_id=request.user.id)
     if now_user.favortopic1 is not None:
         document1=Document.objects.filter(Dkeyword=now_user.favortopic1)
@@ -94,4 +85,9 @@ def index(request):
         pass
     
     return render(request,'infocenter.html',{'document1':document1,'document2':document2})
->>>>>>> 248d80fdc4a3fef93ef6c2c65abe4896fed4f670
+
+def index(request):
+    return render(request,'index.html')
+
+    
+

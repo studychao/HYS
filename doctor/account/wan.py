@@ -38,7 +38,7 @@ from account.models import Document
 #connection.close()
 
 
-ci = "囊肿"#填入关键词
+ci = "肺癌"#填入关键词
 #get_doc(ci)
 
 
