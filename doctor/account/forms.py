@@ -27,4 +27,8 @@ class ProfileEditForm(forms.Form):
     favortopic1 = forms.ChoiceField(choices=[(u'血管瘤','血管瘤'),(u'肺癌','肺癌')],label='选择专业领域1')
     favortopic2 = forms.ChoiceField(choices=[(u'鼻炎','鼻炎'),(u'肺癌','肺癌')],label='选择专业领域2')
 
+class ProfileEditForm2(forms.Form):
+    favortopic1 =forms.CharField()
+    favortopic2 =forms.CharField()
+
 

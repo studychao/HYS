@@ -12,7 +12,7 @@ body{
 .all{
   background-color: #EEEEEE;
   width: 100%;
-  height:500px;
+  height:100%;
 }
 .col-center-block {
     float: none;
@@ -97,10 +97,10 @@ body{
         <a class="btn btn2" href="/">主页<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" style="margin-right: 20px">
-        <a class="btn btn2" href="#">产品介绍</a>
+        <a class="btn btn2" href="../../production">产品介绍</a>
       </li>
       <li class="nav-item" style="margin-right: 20px">
-        <a class="btn btn2" href="#">关于我们</a>
+        <a class="btn btn2" href="../../aboutus">关于我们</a>
       </li>
       <li class="nav-item dropdown" style="margin-right: 80px">
         <a class="btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="border-bottom:3px solid red"><img src="../../static/7-2.png" alt="">账号</a>
@@ -121,11 +121,20 @@ body{
 </nav>
 <div class="all" style="position: relative">
   <div class="container " style="padding-top: 40px">
+    <div class="row" style="margin-bottom: 10px">
+  <div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+      说明:
+      <br>
+      <span>1.以下内容是根据您的专业领域整合的信息.</span>
+      <br>
+      <span>2.搜索结果会<strong>不断更新</strong>,您过几天登陆可以看到我们为您整合的新信息.</span>
+  </div> 
+  </div>
   <div class="row">
     <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
       {{keyword1}}
     </div> 
-    <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
+    <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
       {{keyword2}}
     </div> 
   </div>
@@ -136,13 +145,14 @@ body{
       <ol>
       {% for document in document1 %}
       <li>
-      	<a href="{{document.Durl}}">{{document.Dtitle}}</a>
-      	<br>{{document.Dshoulu_date}}
-        <br>{{document.Dauther}}
-        <div class="record-desc">
-            {{document.Dsummary}}
-            <br>最后更新于{{document.Dpub_date}}
+      	<a href="{{document.Durl}}">{{document.Dtitle}}</lable></a>
+      	<br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px">期刊:{{document.Dshoulu_date}}</lable>
+        <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px">作者:{{document.Dauther}}</lable>
+        <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">摘要:</lable>
+        <br><div class="record-desc" style="font-size: 15px">
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{document.Dsummary}}
         </div>
+        <lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">本搜索记录最后更新于{{document.Dpub_date}}</lable>
         
       </li>
 
@@ -150,23 +160,24 @@ body{
       </ol>
       {% paginate %}
     </div> 
-    <div class="col-md-5 offset-md-1" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC">
+    <div class="col-md-6" style="background-color: white;font-size: 20px;border-bottom: 1px solid #CCCCCC;border-left:1px solid #EEEEEE">
       {% autopaginate document2 5 %}
       <ol>
 {% for news in document2 %}
 <li>
         <a href="{{news.Durl}}">{{news.Dtitle}}</a>
-        <br>{{news.Dshoulu_date}}
-        <br>{{news.Dauther}}
-        <div class="record-desc">
-            {{news.Dsummary}}
-            <br>最后更新于{{news.Dpub_date}}
+        <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">期刊:{{news.Dshoulu_date}}</lable>
+        <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">作者:{{news.Dauther}}</lable>
+        <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">摘要:</lable>
+        <br><div class="record-desc" style="font-size: 15px">
+         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{news.Dsummary}}
         </div>
+        <lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">本搜索记录最后更新于{{news.Dpub_date}}</lable>
 
 </li>
 {%endfor%}
 </ol>
-{% paginate %}
+<label style="font-size: 19px">{% paginate %}</label>
     </div> 
   </div>
 
