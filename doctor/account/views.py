@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm,UserRegistrationForm,ProfileEditForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile,News,Document
+from .models import Profile,Document
 from django.contrib import messages
 import wan
 # Create your views here.
@@ -48,7 +48,6 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             profile = Profile.objects.create(user=new_user)
-            profile.favortopic1='鼻炎'
             profile.save()
             return render(request,'register_done.html',{'new_user':new_user})
 
@@ -63,6 +62,18 @@ def edit(request):
         if profile_form.is_valid():
             favortopic1 = profile_form.cleaned_data['favortopic1']
             favortopic2 = profile_form.cleaned_data['favortopic2']
+            topic1=Document.objects.filter(Dkeyword=favortopic1)
+            topic2=Document.objects.filter(Dkeyword=favortopic2)
+            try:
+                if topic1[0].Dkeyword is None :
+                    pass
+            except IndexError,x:
+                wan.get_docu(favortopic1)
+            try:
+                if topic2[0].Dkeyword is None :
+                    pass
+            except IndexError,x:
+                wan.get_docu(favortopic2)
             user_id = request.POST['id']
             profile = Profile.objects.get(user_id=int(user_id))
             profile.favortopic1 = favortopic1
