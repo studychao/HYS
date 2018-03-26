@@ -35,8 +35,8 @@ def user_login(request):
 @login_required
 def dashboard(request):
     now_user=Profile.objects.get(user_id=request.user.id)
-    if now_user.favortopic1 is not None:
-        status = 1
+    if now_user.favortopic1 == None:
+        status = 1#1是新用户
     else:status = 0
     return render(request,'dashboard.html',{'section':'dashboard','status':status})
 
