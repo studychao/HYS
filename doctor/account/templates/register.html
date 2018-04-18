@@ -123,15 +123,19 @@ body{
   <div class="container col-center-block" style="padding-top: 40px">
   <div class="row">
   <div class="col-sm-12" style="background-color: white;font-size: 40px;border-bottom: 1px solid #CCCCCC">
-      请注册您的信息
+      欢迎加入好医生
   </div> 
   </div>
 
   <div class="row">
     <div class="col-sm-12" style="background-color: white;font-size: 14px;border-bottom: 1px solid #CCCCCC;padding-top: 20px">
-      <form action="." method="post">
-      {{ user_form.as_p }}
-      {% csrf_token %}
+      <form action="." method="post">{% csrf_token %}
+       {% for field in user_form %}
+            <label class="col-sm-3 control-label" style="font-size: 16px">{{ field.label }}</label>
+            <label class="col-sm-6 control-label">{{ field }}</label>
+            {{ field.errors }}
+    {% endfor %}
+    <br>
       <button class="btn btn-sm btn-primary" type="submit" style="margin-bottom: 10px">创建我的账户</button>
     </form>
     </div> 
