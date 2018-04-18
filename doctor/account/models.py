@@ -13,11 +13,6 @@ class Profile(models.Model):
 def __str__(self):
     return 'Profile2 for user {}'.format(self.user.username)
 
-class News(models.Model):
-    
-    Ntitle = models.CharField(max_length=50, unique=True)
-    Npub_date = models.DateField()
-
 
 class Document(models.Model):
     Dtitle = models.CharField(max_length=50, unique=True)

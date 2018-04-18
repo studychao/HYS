@@ -8,3 +8,5 @@ doctor/account/migrations/0001_initial.py
 .DS_Store
 .DS_Store
 .DS_Store
+.DS_Store
+doctor/account/templates/edit2.html
