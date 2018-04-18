@@ -141,4 +141,4 @@ def edit2(request):
     else:
         profile_form = ProfileEditForm2()
     
-    return render(request,'edit.html',{'profile_form':profile_form})
+    return render(request,'edit2.html',{'profile_form':profile_form})

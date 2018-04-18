@@ -128,14 +128,16 @@ body{
       <span>1.以下内容是根据您的专业领域整合的信息.</span>
       <br>
       <span>2.搜索结果会<strong>不断更新</strong>,您过几天登陆可以看到我们为您整合的新信息.</span>
+      <br>
+      <span>3.上方为中文文献，下方为英文文献。</span>
   </div> 
   </div>
   <div class="row">
     <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
-      {{keyword1}}
+      {{keyword1}}-中文文献
     </div> 
     <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
-      {{keyword2}}
+      {{keyword2}}-中文文献
     </div> 
   </div>
 
@@ -178,6 +180,14 @@ body{
 {%endfor%}
 </ol>
 <label style="font-size: 19px">{% paginate %}</label>
+    </div> 
+  </div>
+    <div class="row" style="padding-top: 20px">
+    <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
+      {{keyword1}}-英文文献
+    </div> 
+    <div class="col-md-6" style="background-color: white;font-size: 32px;border-bottom: 1px solid #CCCCCC">
+      {{keyword2}}-英文文献
     </div> 
   </div>
 
