@@ -35,10 +35,10 @@ def user_login(request):
 @login_required
 def dashboard(request):
     now_user=Profile.objects.get(user_id=request.user.id)
-    if now_user.favortopic1 == None:
+    if now_user.favortopic1 == "":
         status = 1#1是新用户
     else:status = 0
-    return render(request,'dashboard.html',{'section':'dashboard','status':status})
+    return render(request,'dashboard.html',{'section':'dashboard','status':status,'haoqi':now_user.favortopic1})
 
 def register(request):
     if request.method == 'POST':
