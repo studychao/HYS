@@ -9,6 +9,11 @@ class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     favortopic1 = models.CharField(max_length=50)
     favortopic2 = models.CharField(max_length=50)
+    favor_id=models.CharField(max_length=50,default="")
+
+class Collection(models.Model):
+    user_id=models.CharField(max_length=50,default="")
+    document_id=models.CharField(max_length=50,default="")
 
 def __str__(self):
     return 'Profile2 for user {}'.format(self.user.username)

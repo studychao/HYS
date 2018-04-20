@@ -127,11 +127,33 @@ body{
       欢迎您,{{ request.user.username }}.
     </div> 
   </div>
-    <div class="row">
  {% if status == 0 %}
+     <div class="row">
+      <div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
+     <h3>您的收藏</h3>
+     {% if i == 1 %}
+     <span>您还没有收藏哦，可以前往<a href="./infocenter">数据图书馆</a>收藏你感兴趣的文献。
+     {% else %}
+     <ol>
+     {% for a in document %}
+      <li>
+             <a href="." id="{{forloop.counter0}}">{{a}}</a>
+             <script>
+              var List= {{ List|safe }};
+              for(i=0;i<List.length;i++)
+document.getElementById(i).href=List[i];
+</script>
+      </li>
+      {% endfor %}
+    </ol>
+    </div> 
+    </div>
+    {% endif %}
+    <div class="row">
     <div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
       如果您想修改您感兴趣的领域，可以<a href="./edit">点击此处</a>修改您的信息。
     </div> 
+  </div>
 {% else %}
 	<div class="col-sm-12" style="background-color: white;font-size: 20px;border-bottom: 3px solid #CCCCCC">
       欢迎您加入我们！这是您第一次来到好医生信息台:)<br>

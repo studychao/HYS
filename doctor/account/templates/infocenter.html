@@ -9,6 +9,43 @@
 body{
     font-family: "Microsoft YaHei" ! important;
   }
+ul.messages {
+    margin:0px 20px;
+    padding:0;
+    list-style-type:
+    none;
+}
+ul.messages li.success,
+ul.messages li.warning,
+ul.messages li.error,
+ul.messages li.info {
+    margin:0;
+
+    padding:14px 20px;
+    list-style:none;
+    color:#fff;
+}
+
+ul.messages li.success { background:#81ce81; }
+ul.messages li.success a { color:#0ac33e; }
+
+ul.messages li.error { background:#a30029; color:#e9828e; }
+ul.messages li.error a { color:#e9828e; }
+
+ul.messages li.info { background:#faffae; color:#696b4e; }
+ul.messages li.info a { color:#1586de; }
+
+ul.messages li.warning { background:#de9404; }
+ul.messages li.warning a { color:#f49000; }
+
+ul.messages li a.close {
+    margin:0;
+    float:right;
+    opacity:1;
+    border:0;
+    box-shadow:none;
+    text-shadow:none;
+}
 .all{
   background-color: #EEEEEE;
   width: 100%;
@@ -119,6 +156,20 @@ body{
     </ul>
 </div>
 </nav>
+
+<div class="all" style="position: relative">
+      {% if messages %}
+    <div style="background-color: #EEEEEE">
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="." class="close">✖</a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+    {% endif %}
 <div class="all" style="position: relative">
   <div class="container " style="padding-top: 40px">
     <div class="row" style="margin-bottom: 10px">
@@ -148,6 +199,10 @@ body{
       {% for document in document1 %}
       <li>
       	<a href="{{document.Durl}}">{{document.Dtitle}}</lable></a>
+        <form action="." method="post"> 
+        <input type="text" name="id" value="{{ document.id }}" class="sr-only" >
+        <br><button style="padding:3px" type="submit" class="btn btn-outline-primary btn-sm"><embed style="" src="../../static/heart.svg" width="30" height="15" /><span style="padding-bottom: 20px;font-size: 15px;font-weight: bold;" >收藏此文献</span></button>
+      </form>
       	<br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px">期刊:{{document.Dshoulu_date}}</lable>
         <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px">作者:{{document.Dauther}}</lable>
         <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">摘要:</lable>
@@ -155,7 +210,6 @@ body{
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{document.Dsummary}}
         </div>
         <lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">本搜索记录最后更新于{{document.Dpub_date}}</lable>
-        
       </li>
 
       {%endfor%}
@@ -168,6 +222,10 @@ body{
 {% for news in document2 %}
 <li>
         <a href="{{news.Durl}}">{{news.Dtitle}}</a>
+        <form action="." method="post"> 
+        <input type="text" name="id" value="{{ news.id }}" class="sr-only" >
+        <br><button style="padding:3px" type="submit" class="btn btn-outline-primary btn-sm"><embed style="" src="../../static/heart.svg" width="30" height="15" /><span style="padding-bottom: 20px;font-size: 15px;font-weight: bold;" >收藏此文献</span></button>
+      </form>
         <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">期刊:{{news.Dshoulu_date}}</lable>
         <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">作者:{{news.Dauther}}</lable>
         <br><lable style="font-size:15px;border-left: 2px solid black;padding-left:5px ">摘要:</lable>

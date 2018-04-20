@@ -6,9 +6,10 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm,UserRegistrationForm,ProfileEditForm,ProfileEditForm2
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Document
+from .models import Profile,Document,Collection
 from django.contrib import messages
 import wan
+import json
 # Create your views here.
 
 def user_login(request):
@@ -34,11 +35,23 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
+    list=[]
+    list2=[]
+    i=0
     now_user=Profile.objects.get(user_id=request.user.id)
     if now_user.favortopic1 == "":
         status = 1#1是新用户
     else:status = 0
-    return render(request,'dashboard.html',{'section':'dashboard','status':status,'haoqi':now_user.favortopic1})
+    user_info=Collection.objects.filter(user_id=request.user.id)
+    if len(user_info)>0:
+        for a in user_info:
+            document=Document.objects.get(id=a.document_id)
+            list.append(document.Dtitle)
+            list2.append(document.Durl)
+    else:
+        i=1
+    
+    return render(request,'dashboard.html',{'section':'dashboard','status':status,'document':list,'url':list2,'i':i,'List': json.dumps(list2)})
 
 def register(request):
     if request.method == 'POST':
@@ -89,6 +102,7 @@ def edit(request):
 
 @login_required
 def infocenter(request):
+    a=1
     now_user=Profile.objects.get(user_id=request.user.id)
     if now_user.favortopic1 is not None:
         document1=Document.objects.filter(Dkeyword=now_user.favortopic1)
@@ -100,7 +114,13 @@ def infocenter(request):
         document1=Document.objects.filter(Dkeyword=now_user.favortopic2)
     else:
         pass
+    if request.method=='POST':
+        a=request.POST['id']
+        collection =Collection(user_id=request.user.id,document_id=a)
+        collection.save()
+        messages.success(request,'收藏成功！请至“账号-个人中心”查看您的收藏')
     return render(request,'infocenter.html',{'document1':document1,'document2':document2,'keyword1':now_user.favortopic1,'keyword2':now_user.favortopic2})
+
 
 def index(request):
     return render(request,'index.html')
